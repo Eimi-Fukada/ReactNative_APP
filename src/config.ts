@@ -1,8 +1,6 @@
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-export const baseURL = isDevelopment
-  ? 'http://8.219.56.97:8083'
-  : 'http://8.219.56.97:8083';
+export const baseURL = isDevelopment ? 'your baseurl' : 'your baseurl';
 
 /**
  * 系统版本
