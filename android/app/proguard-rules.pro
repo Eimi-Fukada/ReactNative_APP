@@ -8,3 +8,7 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# 混淆配置
+-keep class com.baidu.duer.** {*;}
+-keep class com.baidu.operationsdk.**{*;}

@@ -1,13 +1,13 @@
-import {RootStackParamList, routeNames} from '../routes/const';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React, {useMemo, useContext} from 'react';
-import Home from '../pages/home';
-import Mine from '../pages/mine';
+import { RootStackParamList, routeNames } from '../routes/const';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, { useContext, useMemo } from 'react';
 import routes from '../routes';
 import GlobalContext from '../contexts/global.context';
-import images from '../assets/icon-image/images';
+import images from '~/assets/icon-image/images';
 import TabBar from '../components/tabBar';
+import Home from '../pages/home';
+import Mine from '../pages/mine';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -18,15 +18,15 @@ function TabScreen() {
     {
       key: 'tabHome',
       text: '首页',
-      image: images.home,
-      imageSelected: images.homeActive,
+      image: images.icon1,
+      imageSelected: images.icon1,
       url: routeNames.Home,
     },
     {
       key: 'tabUser',
       text: '我的',
-      image: images.mine,
-      imageSelected: images.mineActive,
+      image: images.icon2,
+      imageSelected: images.icon2,
       url: routeNames.Mine,
     },
   ];
@@ -43,16 +43,17 @@ function TabScreen() {
 
   return (
     <Tab.Navigator
-      tabBar={({state, navigation}) => (
+      tabBar={({ state, navigation }) => (
         <TabBar
           path={state.routeNames[state.index]}
           data={data}
-          onChange={tab => {
+          onChange={(tab) => {
             navigation.navigate(tab.url);
           }}
         />
-      )}>
-      {tabsScreens.map(value => (
+      )}
+    >
+      {tabsScreens.map((value) => (
         <Tab.Screen
           key={value.name}
           name={value.name}
@@ -65,19 +66,18 @@ function TabScreen() {
     </Tab.Navigator>
   );
 }
-
 export default function StackLayout() {
   const context = useContext(GlobalContext);
-  const {data: tabs} = context.tab;
+  const { data: tabs } = context.tab;
 
   const [stackScreens] = useMemo(() => {
-    const tabUrls = tabs.map(tab => tab.url);
-    return [routes.filter(route => tabUrls.indexOf(route.name) === -1)];
+    const tabUrls = tabs.map((tab) => tab.url);
+    return [routes.filter((route) => tabUrls.indexOf(route.name) === -1)];
   }, [tabs]);
 
   return (
     <Stack.Navigator
-    // initialRouteName={routeNames.Mine as keyof RootStackParamList}
+      initialRouteName={routeNames.Home as keyof RootStackParamList}
     >
       <Stack.Screen
         name="_tab"
@@ -86,7 +86,7 @@ export default function StackLayout() {
           headerShown: false,
         }}
       />
-      {stackScreens.map(value => (
+      {stackScreens.map((value) => (
         <Stack.Screen
           key={value.name}
           name={value.name as keyof RootStackParamList}

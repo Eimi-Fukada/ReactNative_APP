@@ -1,4 +1,4 @@
-import {ImageStyle, TextStyle, ViewStyle} from 'react-native';
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 export const MMNavigationStyle: ViewStyle = {
   width: '100%',
@@ -54,5 +54,4 @@ export const goback: ViewStyle = {
 export const leftIcon: ImageStyle = {
   width: 20,
   height: 20,
-  transform: [{rotate: '180deg'}],
 };

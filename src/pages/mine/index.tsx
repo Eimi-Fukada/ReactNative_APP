@@ -5,10 +5,10 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-import React, {FC, memo, useRef} from 'react';
-import {ViewModal} from './viewModel';
+import React, { FC, memo, useRef } from 'react';
+import { ViewModal } from './viewModel';
 import * as ss from './styles';
-import {MineProps} from './const';
+import { MineProps } from './const';
 import Navigation from '../../components/navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Animatable from 'react-native-animatable';
@@ -38,11 +38,16 @@ const Component: FC<MineProps> = () => {
       <Navigation title="我的" />
       <View style={styles.page}>
         <LinearGradient
-          style={{height: 100, alignItems: 'center', justifyContent: 'center'}}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          colors={['#74A7F8', '#6DDDD8'] as any}>
-          <Text style={{color: '#fff', fontSize: 20}}>
+          style={{
+            height: 100,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={['#74A7F8', '#6DDDD8'] as any}
+        >
+          <Text style={{ color: '#fff', fontSize: 20 }}>
             this is linear-gradient
           </Text>
         </LinearGradient>
@@ -55,11 +60,13 @@ const Component: FC<MineProps> = () => {
             height: 100,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Animatable.Text
             animation={zoomOut}
-            style={{color: '#fff'}}
-            ref={textRef}>
+            style={{ color: '#fff' }}
+            ref={textRef}
+          >
             bounce
           </Animatable.Text>
         </TouchableOpacity>
@@ -73,11 +80,13 @@ const Component: FC<MineProps> = () => {
             height: 100,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Animatable.Text
             animation={zoomOut}
-            style={{color: '#fff'}}
-            ref={animationRef}>
+            style={{ color: '#fff' }}
+            ref={animationRef}
+          >
             Zoom me out
           </Animatable.Text>
         </TouchableOpacity>
@@ -91,11 +100,13 @@ const Component: FC<MineProps> = () => {
             height: 100,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Animatable.Text
             animation={zoomOut}
-            style={{color: '#fff'}}
-            ref={zoomRef}>
+            style={{ color: '#fff' }}
+            ref={zoomRef}
+          >
             Zoom me out
           </Animatable.Text>
         </TouchableOpacity>

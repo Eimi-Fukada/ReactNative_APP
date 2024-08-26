@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 
 /**
  * 超级锁钩子。未运行完毕锁。n毫秒运行一次锁。运行成功n毫秒后才能运行锁。
@@ -9,7 +9,7 @@ import {useState, useRef} from 'react';
 export function useSuperLock<T extends (...args: any) => Promise<unknown>>(
   this: any,
   fun: T,
-  delay = 100,
+  delay = 100
 ): [(...args: Parameters<T>) => ReturnType<T> | Promise<void>, boolean] {
   const [lock, setLock] = useState(false);
   const lastDate = useRef<Date>();

@@ -32,13 +32,24 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  UIManager,
+  View,
+  useColorScheme,
+} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { WRootToastApp } from 'react-native-smart-tip';
+import Home from './src/pages/home';
+import { NavigationContainer } from '@react-navigation/native';
+import StackLayout from '~/layout/StackLayout';
+import GlobalContext, { IGlobalContext } from '~/contexts/global.context.ts';
 import Welcome from './src/pages/welcome';
-import {Platform, UIManager, View} from 'react-native';
-import StackLayout from './src/layout/StackLayout';
-import {WRootToastApp} from 'react-native-smart-tip';
-import GlobalContext, {IGlobalContext} from '~/contexts/global.context';
-import {useCallBackState} from '~/hooks/useCallBackState';
+import { useCallBackState } from '~/hooks/useCallBackState';
 
 if (Platform.OS === 'android') {
   // 安卓LayoutAnimation动画启动支持
@@ -46,7 +57,14 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const App = () => {
+function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: 'transparent',
+    flex: 1,
+  };
+
   const [globalContenxt, setGlobalContenxt] = useCallBackState<
     Omit<IGlobalContext, 'dispatch'>
   >({
@@ -60,7 +78,7 @@ const App = () => {
 
   const dispatch = <T extends keyof IGlobalContext>(
     key: T,
-    value: IGlobalContext[T],
+    value: IGlobalContext[T]
   ) => {
     setGlobalContenxt({
       [key]: value,
@@ -70,16 +88,42 @@ const App = () => {
   return (
     <WRootToastApp>
       <Welcome>
-        <NavigationContainer>
-          <View style={{flex: 1}}>
-            <GlobalContext.Provider value={{...globalContenxt, dispatch}}>
-              <StackLayout />
-            </GlobalContext.Provider>
-          </View>
-        </NavigationContainer>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle={'light-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+            translucent={true}
+          />
+          <NavigationContainer>
+            <View style={{ flex: 1, backgroundColor: '#fff' }}>
+              <GlobalContext.Provider value={{ ...globalContenxt, dispatch }}>
+                <StackLayout />
+              </GlobalContext.Provider>
+            </View>
+          </NavigationContainer>
+        </SafeAreaView>
       </Welcome>
     </WRootToastApp>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+});
 
 export default App;

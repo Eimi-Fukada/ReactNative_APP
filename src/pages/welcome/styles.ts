@@ -1,4 +1,4 @@
-import {ViewStyle} from 'react-native';
+import { ViewStyle } from 'react-native';
 
 export const page: ViewStyle = {
   flex: 1,

@@ -1,6 +1,5 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
-  // eslint-disable-next-line no-sparse-arrays
+  presets: ['module:@react-native/babel-preset'],
   plugins: [
     [
       'babel-plugin-root-import',

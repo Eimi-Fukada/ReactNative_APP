@@ -3,7 +3,7 @@
  *
  * @description 此方法依赖全局挂载。请确保在APP.tsx中正确挂载全局Toast组件
  */
-import {WToast} from 'react-native-smart-tip';
+import { WToast } from 'react-native-smart-tip';
 
 // enum IconFontName {}
 

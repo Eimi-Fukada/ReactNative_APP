@@ -1,4 +1,4 @@
-import {Dimensions, Platform, StatusBar} from 'react-native';
+import { Dimensions, Platform, StatusBar } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
 /**
@@ -27,7 +27,7 @@ export function judgmentNewPhone(info: string, width: number, height: number) {
  */
 export function getIsNewIphone() {
   const deviceId = DeviceInfo.getDeviceId();
-  const {width, height} = Dimensions.get('window');
+  const { width, height } = Dimensions.get('window');
   return judgmentNewPhone(deviceId, width, height);
 }
 

@@ -1,8 +1,8 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React, {FC, memo} from 'react';
-import {ViewModal} from './viewModel';
+import { View, Text, StyleSheet } from 'react-native';
+import React, { FC, memo } from 'react';
+import { ViewModal } from './viewModel';
 import * as ss from './styles';
-import {WelcomeProps} from './const';
+import { WelcomeProps } from './const';
 
 const styles = StyleSheet.create(ss);
 

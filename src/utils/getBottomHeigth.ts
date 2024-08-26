@@ -1,4 +1,4 @@
-import {getIsNewIphone} from './getIsNewIphone';
+import { getIsNewIphone } from './getIsNewIphone';
 
 /**
  * 获取底部安全距离。

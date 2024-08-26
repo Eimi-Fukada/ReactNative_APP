@@ -1,13 +1,13 @@
-import React, {FC, memo, useEffect, useState} from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import * as ss from './styles';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {TabBarProps, TabBarData} from './const';
-import {getBottomHeight} from '../../utils/getBottomHeigth';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TabBarProps, TabBarData } from './const';
+import { getBottomHeight } from '../../utils/getBottomHeigth';
 import classNames from '../../utils/help';
 
 const styles = StyleSheet.create(ss);
 
-const Component: FC<TabBarProps> = props => {
+const Component: FC<TabBarProps> = (props) => {
   const {
     data,
     onChange,
@@ -22,7 +22,7 @@ const Component: FC<TabBarProps> = props => {
   function setPath() {
     if (path) {
       setCurrentIndex(
-        data.findIndex(value => value.url === path.replace(/\?.*$/g, '')),
+        data.findIndex((value) => value.url === path.replace(/\?.*$/g, ''))
       );
     }
   }
@@ -47,15 +47,16 @@ const Component: FC<TabBarProps> = props => {
 
   return (
     <View>
-      <View style={{height}} />
+      <View style={{ height }} />
       <View style={styles.page}>
-        <View style={[styles.content, {height, paddingBottom}]}>
+        <View style={[styles.content, { height, paddingBottom }]}>
           {data?.map((value, index) => (
             <TouchableOpacity
               key={value.text}
               activeOpacity={1}
               onPress={() => onClick(value, index)}
-              style={{alignItems: 'center'}}>
+              style={{ alignItems: 'center' }}
+            >
               <View style={classNames(styles.image)}>
                 {/^http(s)?:\/\//.test(value.image) ? (
                   <Image

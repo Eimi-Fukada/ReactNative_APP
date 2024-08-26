@@ -1,6 +1,9 @@
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-export const baseURL = isDevelopment ? 'your baseurl' : 'your baseurl';
+const DEV_ENV = 'https://iotp.szjkyl.com/api'; //dev 环境
+const PROD_ENV = 'https://iotp.szjkyl.com/api'; //生产环境
+
+export const apiUrl = isDevelopment ? DEV_ENV : PROD_ENV;
 
 /**
  * 系统版本

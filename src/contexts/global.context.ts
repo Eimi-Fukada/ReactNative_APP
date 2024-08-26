@@ -1,5 +1,5 @@
 import React from 'react';
-import {TabBarData} from '../components/tabBar/const';
+import { TabBarData } from '../components/tabBar/const';
 
 interface GlobalContextTabDTO {
   defaultColor: string;
@@ -12,7 +12,7 @@ export interface IGlobalContext {
   tab: GlobalContextTabDTO;
   dispatch(
     key: keyof IGlobalContext,
-    value: IGlobalContext[keyof IGlobalContext],
+    value: IGlobalContext[keyof IGlobalContext]
   ): void;
 }
 
